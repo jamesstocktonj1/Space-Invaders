@@ -23,35 +23,38 @@ int main() {
         //draw_invader((i * 30) + 20, 80, i % 2);
     }
 
+    uint8_t arr[6] = {4, 2, 0, 1, 2, 4};
+
     
     while(1) {
 
         for(row=0; row<10; row++) {
 
+            clearArea.left = 0;
+            clearArea.right = LCDWIDTH;
+            clearArea.top = row * ROW_INCREMENT;
+            clearArea.bottom = (row * ROW_INCREMENT) + (4 * ROW_HEIGHT);
+
             for(column=0; column<10; column++) {
-
-                for(i=0; i<6; i++) {
-                    if((row % 2) == 0) {
-                        draw_invader((i * 30) + (column * 6), row * 8, column % 2);
-                    }
-                    else {
-                        draw_invader((i * 30) + (60 - (column * 6)), row * 8, column % 2);
-                    }
-                    
-                }
-
-                clearArea.left = 0;
-                clearArea.right = LCDWIDTH;
-                clearArea.top = row * 8;
-                clearArea.bottom = row * 8 + INVADER_H;
 
                 
 
+                if((row % 2) == 0) {
+                    //draw_invader((i * 30) + (column * 6), (row * 8) + (j * 20), column % 2);
+                    draw_screen(column * COLUMN_INCREMENT, row * ROW_INCREMENT, column % 2, arr, 6);
+
+                }
+                else {
+                    //draw_invader((i * 30) + (60 - (column * 6)), (row * 8) + (j * 20), column % 2);
+                    draw_screen((10 * COLUMN_INCREMENT) - (column * COLUMN_INCREMENT), row * ROW_INCREMENT, column % 2, arr, 6);
+                }
+
+
                 set_led();
-                _delay_ms(600);
+                _delay_ms((10 - row) * 50);
 
                 clear_led();
-                _delay_ms(400);
+                _delay_ms((10 - row) * 50);
 
                 fill_rectangle(clearArea, 0x0000);
             }
