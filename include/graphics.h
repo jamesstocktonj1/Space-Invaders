@@ -15,13 +15,12 @@
 #define P INVADER_COL
 #define O 0x0000
 
-uint16_t invader[INVADER_W][INVADER_H];
-//uint16_t invader[INVADER_H * INVADER_W];
-uint16_t inv[INVADER_H][INVADER_W];
+uint16_t invaderA[INVADER_W][INVADER_H];
+uint16_t invaderB[INVADER_W][INVADER_H];
 
 
 
-void draw_invader(uint8_t x, uint8_t y);
+void draw_invader(uint8_t i, uint8_t j, uint8_t type);
 
 
 #endif
