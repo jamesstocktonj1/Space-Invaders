@@ -65,3 +65,16 @@ void draw_invader(uint8_t i, uint8_t j, uint8_t type) {
         }
     }
 }
+
+
+void draw_screen(uint8_t x, uint8_t y, uint8_t type, uint8_t* array, uint8_t arrayLen) {
+
+    uint8_t i, j;
+
+    for(i=0; i<arrayLen; i++) {
+
+        for(j=0; j<array[i]; j++) {
+            draw_invader(x + (i * ITEM_WIDTH), y + (j * ROW_HEIGHT), type);
+        }
+    }
+}
