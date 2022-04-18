@@ -14,7 +14,11 @@ int main() {
     init_lcd();
     set_orientation(North);
 
-    draw_invader(80, 80);
+    int i;
+
+    for(i=0; i<6; i++) {
+        draw_invader((i * 30) + 20, 80, i % 2);
+    }
 
     
     while(1) {
